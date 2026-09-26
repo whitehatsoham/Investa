@@ -1,0 +1,14 @@
+# Secrets — an API key is a password. Never commit one.
+alphavantage-key.txt
+*.key
+key
+.env
+.env.*
+
+# macOS
+.DS_Store
+._*
+
+# Editor noise
+.vscode/
+.idea/

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Investa — Learn to Invest</title>
+<meta name="description" content="A friendly, step-by-step course that takes you from total beginner to confident investor — with real-world case studies and a live investing competition." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a href="#view" class="skip-link">Skip to content</a>
+<!-- ===== TOP BAR ===== -->
+<header class="topbar">
+  <div class="brand" onclick="App.go('home')" role="button" tabindex="0" aria-label="Investa home">
+    <span class="logo" aria-hidden="true">📈</span>
+    <span class="brand-name">Investa<small>Learn · Practice · Invest</small></span>
+  </div>
+  <nav class="topnav" id="topnav" aria-label="Main navigation"></nav>
+  <div class="topbar-right">
+    <button class="ghost-btn" id="searchBtn" onclick="App.go('search')" title="Search" aria-label="Search">🔍</button>
+    <div class="streak-chip" id="streakChip" title="Daily streak" onclick="App.go('home')" style="display:none">🔥 0</div>
+    <div class="level-chip" id="levelChip" title="Your progress & badges" aria-label="Your progress and badges" onclick="App.go('badges')">
+      <span class="lvl-ring" id="lvlRing" aria-hidden="true"><span class="lvl-ring-num" id="lvlNum">1</span></span>
+      <span class="lvl-text"><b id="lvlName">Beginner</b><small id="xpBadge">0 XP</small></span>
+    </div>
+    <button class="ghost-btn" id="langBtn" onclick="I18N.toggle()" title="हिंदी में देखें" aria-label="Switch language">हिं</button>
+    <button class="ghost-btn" id="themeBtn" onclick="App.toggleTheme()" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
+    <button class="ghost-btn" id="muteBtn" onclick="App.toggleMute()" title="Toggle sound effects" aria-label="Toggle sound effects">🔊</button>
+    <button class="ghost-btn" onclick="App.resetProgress()" title="Reset all progress" aria-label="Reset all progress">↺</button>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main id="view" role="main" tabindex="-1"></main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-brand">📈 Investa</div>
+  <p>An educational project — not financial advice. Everything here exists to teach you how investing works so you can make confident, informed decisions. 🌱</p>
+  <p style="margin-top:8px"><a href="#" onclick="App.go('references');return false">📑 References &amp; sources</a></p>
+</footer>
+
+<!-- ===== TOAST + CONFETTI ===== -->
+<div id="toast" class="toast"></div>
+
+<script src="data.js"></script>
+<script src="simple-en.js"></script>
+<script src="hi-content.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
