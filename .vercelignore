@@ -1,0 +1,6 @@
+# The August build is kept in the repo for reference only — it has none of the
+# September work (real prices, company panels, trade history, accounts).
+# Don't publish it alongside the real site.
+older-version-aug-2026/
+README.md
+refresh-prices.py

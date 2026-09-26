@@ -36,7 +36,7 @@ def _load_key():
              "  Free key: https://www.alphavantage.co/support/#api-key")
 
 KEY  = _load_key()
-PAGE = os.path.join(HERE, "investa.html")
+PAGE = os.path.join(HERE, "index.html")
 
 QUOTES    = ["AAPL","MSFT","NVDA","AMZN","GOOGL","TSLA","META","SPY","QQQ","BND",
              "AMD","KO","JPM","JNJ","COST","NFLX","V","SO"]

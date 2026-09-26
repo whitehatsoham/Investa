@@ -15,15 +15,15 @@ Available in **English and Hindi** (the हिं button in the top bar).
 
 | File | What it is |
 |---|---|
-| **`investa.html`** | **The whole site in one file.** Double-click it to open in any browser. No install, no server, no internet needed. |
-| `refresh-prices.py` | Updates the real stock prices baked into `investa.html`. See below. |
+| **`index.html`** | **The whole site in one file.** Double-click it to open in any browser. No install, no server, no internet needed. |
+| `refresh-prices.py` | Updates the real stock prices baked into `index.html`. See below. |
 | `older-version-aug-2026/` | The earlier version, split across separate files. Kept for reference — see the note at the bottom. |
 
 ---
 
 ## Running it
 
-Double-click `investa.html`. That's it.
+Double-click `index.html`. That's it.
 
 Everything a student does — lessons finished, XP, badges, their portfolio and every
 trade — is saved in that browser on that computer. Several students can share one
@@ -39,7 +39,7 @@ account code, then paste it into the same screen on the other machine.
 
 Prices are **real**, and they are **baked into the page** rather than fetched while it
 runs. The Arena, the Stock Analyzer and the company panels all read from one block of
-data near the top of `investa.html`.
+data near the top of `index.html`.
 
 ```bash
 python3 refresh-prices.py                # prices for all 18 tickers   (18 API calls)
@@ -96,5 +96,5 @@ The first build, before everything was combined into a single file. It splits in
 one file.
 
 **It has none of the September work** — no real market prices, no company panels, no
-trade history, no student accounts. It is here for reference only. `investa.html` in the
+trade history, no student accounts. It is here for reference only. `index.html` in the
 folder above is the real one.
