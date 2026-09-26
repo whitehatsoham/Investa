@@ -25,15 +25,44 @@ import json, time, sys, os, re, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+def _read_dotenv(path):
+    """Minimal .env reader - no dependency on python-dotenv."""
+    values = {}
+    try:
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                values[k.strip()] = v.strip().strip("\"'")
+    except OSError:
+        pass
+    return values
+
 def _load_key():
-    """Key file sitting next to this script wins; otherwise fall back to ~/.investa/key."""
+    """First key found wins, most explicit first."""
+    env = os.environ.get("ALPHAVANTAGE_API_KEY", "").strip()
+    if env:
+        return env
+
+    dotenv = _read_dotenv(os.path.join(HERE, ".env")).get("ALPHAVANTAGE_API_KEY", "").strip()
+    if dotenv and dotenv != "your_key_here":
+        return dotenv
+
     for path in (os.path.join(HERE, "alphavantage-key.txt"),
                  os.path.expanduser("~/.investa/key")):
         if os.path.exists(path):
-            return open(path).read().strip()
-    sys.exit("No Alpha Vantage key found.\n"
-             "  Put it in alphavantage-key.txt next to this script, or at ~/.investa/key.\n"
-             "  Free key: https://www.alphavantage.co/support/#api-key")
+            key = open(path).read().strip()
+            if key:
+                return key
+
+    sys.exit("No Alpha Vantage key found. Set one of these, in order of preference:\n"
+             "  1. Copy .env.example to .env and put your key in it\n"
+             "  2. export ALPHAVANTAGE_API_KEY=...\n"
+             "  3. A file called alphavantage-key.txt next to this script\n"
+             "  4. ~/.investa/key\n"
+             "Free key: https://www.alphavantage.co/support/#api-key")
 
 KEY  = _load_key()
 PAGE = os.path.join(HERE, "index.html")

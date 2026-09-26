@@ -49,10 +49,19 @@ python3 refresh-prices.py --spark        # + 10-week price charts       (+4)
 ```
 
 Data comes from [Alpha Vantage](https://www.alphavantage.co). The script needs your API
-key, which it looks for in two places:
+key. Copy the example file and paste your key in:
 
-1. `alphavantage-key.txt` next to the script
-2. `~/.investa/key`
+```bash
+cp .env.example .env
+```
+
+`.env` is gitignored, so your key stays on your machine. If you'd rather not use a
+`.env`, the script checks four places in order and takes the first it finds:
+
+1. `.env` next to the script
+2. the `ALPHAVANTAGE_API_KEY` environment variable
+3. `alphavantage-key.txt` next to the script
+4. `~/.investa/key`
 
 **Your key is deliberately not in this folder.** A key is a password — if this folder
 ever gets shared, emailed or pushed somewhere public, the key goes with it. It stays at
